@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <link rel="stylesheet" href="../acset/css/style.css" />
+    <link rel="stylesheet" href="../acset/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <!-- Home page -->
+      <div class="header">
+        <a class="header-logo" href="index.html">
+          <img src="../acset/img/logo.jpg" alt="logo" class="logo">
+          <span class="brand">Adidas</span>
+      </a>
+
+        <ul class="header-navbar">
+          <li class="nav-title"><a href="../html/index.html">Home</a></li>
+          <li class="nav-title">About</li>
+          <li class="nav-title"><a href="../html/bills-page.html">Bills</a></li>
+          <li class="nav-title">
+            <a href="cart-page.html" class="logo-cart"
+              ><i class="fa-solid fa-cart-shopping"></i>
+                <div class="number-item"></div>
+              </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Render Cart -->
+      <div class="container-cart-page">
+        <!-- Phần item trong giỏ hàng -->
+        <div class="item-cart">
+          <!-- Phần first line render -->
+          <div class="header-list-item">
+            <div class="grid__column-2">Product Name</div>
+            <div class="grid__column-8">Quantity</div>
+            <div class="grid__column-4 subtotal-price">Subtotal</div>
+            <div class="grid__column-8">Total</div>
+            <div class="grid__column-8">Clear Cart</div>
+          </div>
+          <!-- Phần render -->
+          <div class="content-list-item"></div>
+          <div class="total"></div>
+          
+          <!-- Footder -->
+          <div class="footter">
+            <div class="back-button">
+              <a href="../html/index.html">
+                <i class="fa-solid fa-arrow-left"></i>
+                Back to Shopping
+              </a>
+            </div>
+              <div class="buy-button" onclick="switchBuyPopup()">Buy</div>
+          </div>
+        </div>
+
+        <!-- Render empty cart -->
+        <div class="empty-cart">
+          <div class="background-img"></div>
+          <div class="back-button">
+            <a href="../html/index.html">
+              <i class="fa-solid fa-arrow-left"></i>
+              Back to Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of Container Cart-->
+
+      <div class="buy-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-body">
+          <div class="popup-main">
+            <div class="popup-header">
+              <h5 class="modal-title">Thông tin người mua</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onclick="switchBuyPopup()"
+              ></button>
+            </div>
+            <div class="popup-body">
+              <div class="row">
+                <label for="" class="form-label">Họ và tên<sup>*</sup></label>
+                <div class="col">
+                  <input
+                    id="firstname"
+                    type="text"
+                    class="form-control firstName"
+                    placeholder="Họ"
+                    onchange="validateName()"
+                  />
+                  <div class="noteFirstName"></div>
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control lastName"
+                    placeholder="Tên"
+                    onchange="validateLastName()"
+                  />
+                  <div class="noteLastName"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="" class="form-label">Email<sup>*</sup></label>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control email"
+                    placeholder="Email"
+                    onchange="validateEmail()"
+                  />
+                  <div class="noteEmail"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="" class="form-label">Số điện thoại<sup>*</sup></label>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control phoneNumber"
+                    placeholder="Số điện thoại"
+                    onchange="validatePhoneNumber()"
+                  />
+                  <div class="notePhoneNumber"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="" class="form-label">Địa chỉ<sup>*</sup></label>
+                <div class="col">
+                  <select
+                    class="form-select province"
+                    onchange="renderDistrict()"
+                  >
+                    <!-- Render here -->
+                  </select>
+                  <div class="noteProvince"></div>
+                </div>
+                <div class="col">
+                  <select class="form-select district" onchange="renderWard()">
+                    <option selected value="0">--Chọn Quận/Huyện--</option>
+                    <option value="0">Chọn Tỉnh/Thành phố trước</option>
+                    <!-- Render here -->
+                  </select>
+                  <div class="noteDistrict"></div>
+                </div>
+                <div class="col">
+                  <select class="form-select ward" onchange="validateWard()">
+                    <option selected value="0">--Chọn Phường/Xã--</option>
+                    <option value="0">Chọn Quận/Huyện trước</option>
+                    <!-- Render here -->
+                  </select>
+                  <div class="noteWard"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="" class="form-label"></label>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control address"
+                    placeholder="Số nhà"
+                    onchange="validateAddress()"
+                  />
+                  <div class="noteAddress"></div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="" class="form-label">Gửi lời nhắn:</label>
+                <div class="col">
+                  <textarea
+                    name="message"
+                    id="message"
+                    class="form-control text-area"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="popup-footter">
+              <button
+                type="button"
+                class="btn btn-primary "
+                onclick="createNewCustomer()"
+              >
+                Xác nhận
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger cancel"
+                onclick="switchBuyPopup()"
+              >
+                Hủy
+              </button>
+            </div>
+          </div>
+        </div >
+      </div>
+    </div>
+    <!-- End Home page -->
+    <script src="../js/main.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/buy-cart.js"></script>
+  </body>
+</html>

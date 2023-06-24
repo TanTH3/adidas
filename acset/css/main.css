@@ -1,0 +1,43 @@
+/* responsive */
+.grid{
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  min-width: 1200px;
+}
+
+.grid__row{
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+  margin-right: -5px;
+  justify-content: center;
+}
+
+
+/* test */
+.grid__column-2{
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 48%;
+}
+
+.grid__column-4-product{
+  width: 22%;
+}
+
+.grid__column-4{
+  width: 24%;
+}
+
+.grid__column-8{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 12%;
+  text-align: center;
+}
+
+
